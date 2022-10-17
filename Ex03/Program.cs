@@ -13,65 +13,31 @@ int[,,] Creat3d(int x, int y, int z)
     return new int[x, y, z];
 }
 
-int[] CreateArr(int size = 6)
+int[] CreateArr(int size)
 {
-    return new int [size];
+    return new int[size];
 }
 
-void UniqueNUmber(int [] array)
-{
-    int size = array.Length;
-    int i =0;
-    while (i <size)
-    {
-    int value = 0;
-    while(Array.IndexOf(array,value)!= -1)
-    {
-        value = Random.Shared.Next(1, 90);
-    }
-    array[i++] = value;
-}
 
-}
 
-void FillWithUniqueNumber(int[,,] array, int startValue = 10, int length = 90)
+void Print3d(int[,,] array3d)
 {
-    int[] helper = CreateArr();
-    int size = helper.Length;
-    int x = array.GetLength(0);
-    int y = array.GetLength(1);
-    int z = array.GetLength(2);
+    int x = array3d.GetLength(0);
+    int y = array3d.GetLength(1);
+    int z = array3d.GetLength(2);
     for (int i = 0; i < x; i++)
     {
         for (int j = 0; j < y; j++)
         {
             for (int k = 0; k < z; k++)
             {
-                for(int n = 0; n <size; n++)
-                array[i,j,k] = startValue 
-            }
-        }
-    }
-}
-
-void Print3d(int[,,] array)
-{
-int x = array.GetLength(0);
-    int y = array.GetLength(1);
-    int z = array.GetLength(2);
-    for (int i = 0; i < x; i++)
-    {
-        for (int j = 0; j < y; j++)
-        {
-            for (int k = 0; k < z; k++)
-            {
-                Console.Write($" {array[i,j,k]}({i} {j} {k}) ");
+                Console.Write($" {array3d[i, j, k]}({i} {j} {k}) ");
             }
             Console.WriteLine();
         }
     }
 }
 
-int[,,] twodigit = Creat3d(2,2,2);
-FillWithUniqueSequences(twodigit);
+int[,,] twodigit = Creat3d(2, 2, 2);
+
 Print3d(twodigit);
