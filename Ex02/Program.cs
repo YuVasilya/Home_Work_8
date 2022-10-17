@@ -40,24 +40,40 @@ void PrintMatix(int[,] matrix)
     }
 }
 
-void ProductMatrix(int[,] multiplier1, int multiplier2, int[,] product)
+int[,] MatrixMultiplication(int[,] matrixA, int[,] matrixB)
 {
-    int row1 = multiplier1.GetLength(0);
-    int col1 = multiplier1.GetLength(1);
-    int row2 = multiplier2.GetLength(0);
-    int col2 = multiplier2.GetLength(1);
-
+    int row1 = matrixA.GetLength(0);
+    int col1 = matrixA.GetLength(1);
+    int row2 = matrixB.GetLength(0);
+    int col2 = matrixB.GetLength(1);
+    if (col1 != row2)
+    {
+        Console.WriteLine("Умножение не возможно! Количество столбцов первой матрицы не равно количеству строк второй матрицы.");
+    }
+    int[,] matrixC = new int[row1, col2];
     for (int i = 0; i < row1; i++)
     {
         for (int j = 0; j < col2; j++)
         {
-            for (int m = 0; m < row2; m++)
+            matrixC[i, j] = 0;
+            for (int n = 0; n < col1; n++)
             {
-                for (int n = 0; n < col2; n++)
-                {
-                    product[k,l] = multiplier1[i,j]*multiplier2[m,n]
-                }
+                matrixC[i, j] += matrixA[i, n] * matrixB[n, j];
             }
         }
     }
+    return matrixC;
 }
+
+Console.WriteLine("Matrix A");
+int[,] a = CreatMatrix(2, 2);
+FillMatrix(a);
+PrintMatix(a);
+Console.WriteLine();
+Console.WriteLine("Matrix B");
+int[,] b = CreatMatrix(2, 2);
+FillMatrix(b);
+PrintMatix(b);
+Console.WriteLine();
+Console.WriteLine("Matrix A & B multiplication");
+PrintMatix(MatrixMultiplication(a, b));
