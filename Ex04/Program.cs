@@ -15,16 +15,33 @@ int[,] CreatMatrix(int row, int column)
 
 void FillMatrix(int[,] matrix)
 {
-    int row = matrix.GetLength(0);
-    int column = matrix.GetLength(1);
+    int row = matrix.GetLength(0) - 1;
+    int column = matrix.GetLength(1) - 1;
     int startnumber = 1;
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < column; j++)
-        {
-            matrix[i, j] = startnumber ++;
-        }
-    }
+    int i = 0;
+    int j = 0;
+
+    i = 0;
+    for (j = 0; j <= column; j++)  matrix[i, j] = startnumber++;
+    
+    j = column;
+    for (i = 1; i < row; i++)  matrix[i, j] = startnumber++;
+        
+    i = row;
+    for (j = column; j >= 0; j--)  matrix[i, j] = startnumber++;
+    
+    j = 0;
+    for ( i = row -1; i>0; i--)  matrix[i, j] = startnumber++;
+    
+    i = 1;
+    for (j = 1; j < column; j++)  matrix[i, j] = startnumber++;
+
+    j = column -1;
+    for ( i = row -1; i<row; i++)  matrix[i, j] = startnumber++;
+
+    i = row-1;
+    j = 1;  
+    matrix[i, j] = startnumber++;   
 }
 
 void PrintMatrix(int[,] matrix)
